@@ -1,0 +1,139 @@
+# Site Settings
+site_name: !ENV [SITE_NAME, ORG_NAME, "System Documentation"]
+site_url: !ENV [SITE_URL, DEV_ADDRESS, "http://localhost:8080"]
+site_description: !ENV SITE_DESCRIPTION
+site_author: !ENV SITE_AUTHOR
+copyright: !ENV [COPYRIGHT_NOTICE ]
+
+
+
+# Additional Metadata
+extra:
+  documentation_version: !ENV DOCUMENTATION_VERSION
+
+
+
+# GitHub Repo Settings
+repo_url: !ENV GIT_REPO_URL
+repo_name: !ENV GIT_REPO_NAME
+
+
+
+# Theme
+theme:
+  name: material
+  locale: en
+  custom_dir: theme_overrides
+  logo: site_assets/images/favicon.svg
+  palette:
+    primary: custom
+    accent: custom
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.instant
+    - navigation.instant.preview
+    - navigation.tracking
+    - toc.follow
+
+
+
+# Additional configuration
+use_directory_urls: true
+extra:
+  generator: false # Hide MK Docs branding
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/
+      name: Github
+    - icon: fontawesome/solid/link
+      link: https://example.com
+      name: https://example.com
+    - icon: fontawesome/solid/link
+      link: https://example.com
+      name: https://example.com
+    - icon: fontawesome/solid/envelope
+      link: mailto:someone@example.com
+      name: Email Us
+
+
+
+# Extensions
+## Markdown
+markdown_extensions:
+  - wikilinks
+  - toc
+  - smarty
+  - sane_lists
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+## MKDocs
+plugins:
+  - abs-to-rel
+  - tags
+#  - drawio-exporter:
+#      drawio_executable: null
+#      format: svg
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - git-authors:
+      show_email_address: false
+  - offline
+  - search:
+      enabled: !ENV SEARCH
+      separator: '[\s\-\.]+'
+      min_search_length: 3
+      indexing: 'full'
+      lang: en
+  - privacy:
+      enabled: false
+      assets_fetch: false
+
+
+
+# Navigation
+not_in_nav: |
+  site_assets/
+  assets/
+  uploads/
+  files/
+
+
+
+# Build settings
+docs_dir: "docs"
+site_dir: "build"
+
+
+
+# Additional files
+extra_css:
+  - site_assets/stylesheets/custom.css
+extra_javascript:
+  - site_assets/js/custom.js
+
+
+
+# Drafts configuration
+draft_docs: |
+  drafts/
+  _draft.md
+  _unpublished.md
+
+
+
+# Validation configuration
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognised_links: warn
+  anchors: warn
+
+
+
+# Development configuration
+strict: false
+dev_addr: !ENV DEV_ADDRESS
